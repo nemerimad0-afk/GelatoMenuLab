@@ -201,7 +201,7 @@
     "id": "affogato",
     "title": "افوكاتو جيلاتو",
     "icon": "Coffee",
-    "image": "https://ptmbrqmkzruidkaugahl.supabase.co/storage/v1/object/public/menuplaza/menus/cm4s4ombi0000did4g09fz0f0/images/91d50ef5-3497-4eb3-aecd-46ae28e62a52-fwktw-bystshyw.jpg",
+    "image": "https://www.image2url.com/r2/default/files/1779630658385-55e350a5-fea7-4a66-a19f-36cff901d684.png",
     "items": [
       {
         "id": "af1",
@@ -720,7 +720,7 @@
     "id": "fresh_drinks",
     "title": "المشروبات الطازجة",
     "icon": "CupSoda",
-    "image": "https://www.image2url.com/r2/default/files/1779626509593-101ac11d-57e2-4548-924d-b9eec49482a4.png",
+    "image": "https://www.image2url.com/r2/default/files/1779630828100-b9943ae4-f90f-426c-8ac7-1dafa6e96813.png",
     "items": [
       {
         "id": "fd1",
@@ -975,7 +975,7 @@
     "id": "soft_drinks",
     "title": "المشروبات الغازية",
     "icon": "CupSoda",
-    "image": "https://www.image2url.com/r2/default/files/1779626285300-38d2e691-dad6-4c73-b7b8-90bb984caada.png",
+    "image": "https://www.image2url.com/r2/default/files/1779630870334-cf5d4f14-c800-4136-b73b-d4c222684a4c.png",
     "items": [
       {
         "id": "sd1",
