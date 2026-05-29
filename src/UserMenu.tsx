@@ -29,39 +29,6 @@ const permanentCategoryImages: Record<string, string> = {
   frozen_yogurt: "/images/category_frozen_yogurt_1779623678153.png",
 };
 
-const AdBanner = () => {
-  const bannerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!bannerRef.current) return;
-    
-    // Clear container to avoid duplicate nested scripts/iframes on re-renders
-    bannerRef.current.innerHTML = '';
-
-    const conf = document.createElement('script');
-    conf.type = 'text/javascript';
-    conf.innerHTML = `
-      var atOptions = {
-        'key' : '91137e4ad51013ceeaadb7bc877b16c5',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-    `;
-
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "https://www.highperformanceformat.com/91137e4ad51013ceeaadb7bc877b16c5/invoke.js";
-    script.async = true;
-
-    bannerRef.current.appendChild(conf);
-    bannerRef.current.appendChild(script);
-  }, []);
-
-  return <div ref={bannerRef} className="w-full h-[90px] flex justify-center items-center overflow-hidden"></div>;
-};
-
 export default function UserMenu() {
   const [menuData, setMenuData] = useState<MenuCategory[]>(localMenuData);
   const [showSplash, setShowSplash] = useState(true);
@@ -414,6 +381,44 @@ export default function UserMenu() {
                   ))}
                 </div>
               </main>
+
+              {/* Footer */}
+              <footer className="mt-16 bg-[#1A0B05] rounded-t-[3rem] p-8 sm:p-12 pb-24 text-center shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&q=80&w=800')] opacity-5 bg-center bg-cover mix-blend-overlay" />
+                
+                <div className="relative z-10 max-w-4xl mx-auto">
+                  <h3 className="text-[#D4AF37] text-xl sm:text-2xl font-bold mb-6">
+                    تابعنا على مواقع التواصل الاجتماعي
+                  </h3>
+
+                  <div className="flex justify-center items-center gap-4 sm:gap-6 mb-8" dir="ltr">
+                    <a href="https://www.instagram.com/gelato.lab.palestine?igsh=ZHdzbG1jejgzeXZ2" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 hover:bg-[#D4AF37] hover:text-[#1A0B05] hover:scale-110 transition-all duration-300 flex items-center justify-center text-white backdrop-blur-sm border border-white/10">
+                      <Instagram size={22} />
+                    </a>
+                    <a href="https://www.facebook.com/share/18DfbQAT31/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 hover:bg-[#D4AF37] hover:text-[#1A0B05] hover:scale-110 transition-all duration-300 flex items-center justify-center text-white backdrop-blur-sm border border-white/10">
+                      <Facebook size={22} />
+                    </a>
+                  </div>
+                  
+                  <p className="text-white/50 text-sm mb-4">
+                    أو تواصل عبر الواتساب
+                  </p>
+
+                  <div className="flex justify-center mb-12">
+                    <a href="https://wa.me/970569716164" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white shadow-[0_0_20px_rgba(34,197,94,0.3)] border border-green-400/50">
+                      <MessageCircle size={28} />
+                    </a>
+                  </div>
+                  
+                  <div className="border-t border-white/10 pt-10 pb-2 flex flex-col items-center">
+                    <h4 className="text-xl sm:text-2xl font-bold text-white mb-2">جيلاتو لاب - دورا</h4>
+                    <p className="text-white/50 mb-10 text-sm">تجربة طعم لا يُقاوم</p>
+                    <p className="text-white/40 text-xs">
+                      © 2026 جميع الحقوق محفوظة - جيلاتو لاب
+                    </p>
+                  </div>
+                </div>
+              </footer>
             </motion.div>
           ) : (
             <motion.div
@@ -627,49 +632,6 @@ export default function UserMenu() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Global Footer with Ad Banner */}
-        <footer className="mt-8 bg-[#1A0B05] rounded-t-[3rem] p-8 sm:p-12 pb-24 text-center shadow-[0_-10px_40px_rgba(0,0,0,0.1)] relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&q=80&w=800')] opacity-5 bg-center bg-cover mix-blend-overlay" />
-          
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <h3 className="text-[#D4AF37] text-xl sm:text-2xl font-bold mb-6">
-              تابعنا على مواقع التواصل الاجتماعي
-            </h3>
-
-            <div className="flex justify-center items-center gap-4 sm:gap-6 mb-8" dir="ltr">
-              <a href="https://www.instagram.com/gelato.lab.palestine?igsh=ZHdzbG1jejgzeXZ2" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 hover:bg-[#D4AF37] hover:text-[#1A0B05] hover:scale-110 transition-all duration-300 flex items-center justify-center text-white backdrop-blur-sm border border-white/10">
-                <Instagram size={22} />
-              </a>
-              <a href="https://www.facebook.com/share/18DfbQAT31/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 hover:bg-[#D4AF37] hover:text-[#1A0B05] hover:scale-110 transition-all duration-300 flex items-center justify-center text-white backdrop-blur-sm border border-white/10">
-                <Facebook size={22} />
-              </a>
-            </div>
-            
-            <p className="text-white/50 text-sm mb-4">
-              أو تواصل عبر الواتساب
-            </p>
-
-            <div className="flex justify-center mb-12">
-              <a href="https://wa.me/970569716164" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 hover:scale-110 transition-all duration-300 flex items-center justify-center text-white shadow-[0_0_20px_rgba(34,197,94,0.3)] border border-green-400/50">
-                <MessageCircle size={28} />
-              </a>
-            </div>
-            
-            <div className="border-t border-white/10 pt-10 pb-2 flex flex-col items-center w-full">
-              <h4 className="text-xl sm:text-2xl font-bold text-white mb-2">جيلاتو لاب - دورا</h4>
-              <p className="text-white/50 mb-10 text-sm">تجربة طعم لا يُقاوم</p>
-              <p className="text-white/40 text-xs mb-8">
-                © 2026 جميع الحقوق محفوظة - جيلاتو لاب
-              </p>
-
-              {/* Banner Ad 728x90 */}
-              <div className="w-full max-w-[728px] mx-auto overflow-hidden rounded-lg shadow-lg relative group bg-transparent">
-                <AdBanner />
-              </div>
-            </div>
-          </div>
-        </footer>
 
         {/* Scroll to Top Button */}
         <AnimatePresence>
