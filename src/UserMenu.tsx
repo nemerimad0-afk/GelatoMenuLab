@@ -521,28 +521,28 @@ export default function UserMenu() {
                             
                             {/* Helper to parse sizes/prices from desc */}
                             {(() => {
-                              const gelatoMatch = item.description?.match(/طابة:\s*(\d+)،\s*طابتين:\s*(\d+)،\s*ثلاث\s*طابات:\s*(\d+)/);
-                              const sizeMatch = item.description?.match(/\((كبير|جماعية):\s*(\d+)\)/);
+                              const gelatoMatch = item.description?.match(/حجم صغير:\s*(\d+)،\s*حجم وسط:\s*(\d+)،\s*حجم كبير:\s*(\d+)/) || item.description?.match(/طابة:\s*(\d+)،\s*طابتين:\s*(\d+)،\s*ثلاث\s*طابات:\s*(\d+)/);
+                              const sizeMatch = item.description?.match(/\((كبير|جماعي|جماعية):\s*(\d+)\s*(شيكل)?\)/);
                               
                               if (gelatoMatch) {
                                 return (
                                   <div className="flex flex-col gap-1 items-end shrink-0">
                                     <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-[#D4AF37]/20 to-transparent pr-3 pl-2 py-0.5 rounded-l-full sm:rounded-full text-[#D4AF37] font-black w-24 border-r-2 border-[#D4AF37]">
-                                      <span className="text-xs font-bold whitespace-nowrap">طابة:</span>
+                                      <span className="text-xs font-bold whitespace-nowrap">صغير:</span>
                                       <div className="flex items-baseline gap-0.5">
                                         <span className="text-sm">{gelatoMatch[1]}</span>
                                         <span className="text-[10px] text-[#D4AF37]/80">₪</span>
                                       </div>
                                     </div>
                                     <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-[#D4AF37]/20 to-transparent pr-3 pl-2 py-0.5 rounded-l-full sm:rounded-full text-[#D4AF37] font-black w-24 border-r-2 border-[#D4AF37]">
-                                      <span className="text-xs font-bold whitespace-nowrap">طابتين:</span>
+                                      <span className="text-xs font-bold whitespace-nowrap">وسط:</span>
                                       <div className="flex items-baseline gap-0.5">
                                         <span className="text-sm">{gelatoMatch[2]}</span>
                                         <span className="text-[10px] text-[#D4AF37]/80">₪</span>
                                       </div>
                                     </div>
                                     <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-[#D4AF37]/20 to-transparent pr-3 pl-2 py-0.5 rounded-l-full sm:rounded-full text-[#D4AF37] font-black w-24 border-r-2 border-[#D4AF37]">
-                                      <span className="text-xs font-bold whitespace-nowrap">3 طابات:</span>
+                                      <span className="text-xs font-bold whitespace-nowrap">كبير:</span>
                                       <div className="flex items-baseline gap-0.5">
                                         <span className="text-sm">{gelatoMatch[3]}</span>
                                         <span className="text-[10px] text-[#D4AF37]/80">₪</span>
@@ -553,7 +553,7 @@ export default function UserMenu() {
                               }
                               
                               if (sizeMatch) {
-                                const smallLabel = sizeMatch[1] === 'كبير' ? 'صغير' : 'فردية';
+                                const smallLabel = sizeMatch[1].includes('جماع') ? 'فردي' : 'صغير';
                                 return (
                                   <div className="flex flex-col gap-1 items-end shrink-0">
                                     <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-[#D4AF37]/20 to-transparent pr-3 pl-2 py-1 rounded-l-full sm:rounded-full text-[#D4AF37] font-black min-w-[90px] border-r-2 border-[#D4AF37]">
@@ -564,7 +564,7 @@ export default function UserMenu() {
                                       </div>
                                     </div>
                                     <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-[#D4AF37]/20 to-transparent pr-3 pl-2 py-1 rounded-l-full sm:rounded-full text-[#D4AF37] font-black min-w-[90px] border-r-2 border-[#D4AF37]">
-                                      <span className="text-xs font-bold whitespace-nowrap">{sizeMatch[1]}:</span>
+                                      <span className="text-xs font-bold whitespace-nowrap">{sizeMatch[1].replace('ية', 'ي')}:</span>
                                       <div className="flex items-baseline gap-0.5">
                                         <span className="text-sm">{sizeMatch[2]}</span>
                                         <span className="text-[10px] text-[#D4AF37]/80">₪</span>
@@ -589,8 +589,9 @@ export default function UserMenu() {
                           {item.description && (
                             <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed drop-shadow-sm mt-1 sm:mt-0">
                               {item.description
+                                .replace(/\s*-\s*حجم صغير:\s*\d+،\s*حجم وسط:\s*\d+،\s*حجم كبير:\s*\d+/, "")
                                 .replace(/\s*-\s*طابة:\s*\d+،\s*طابتين:\s*\d+،\s*ثلاث\s*طابات:\s*\d+/, "")
-                                .replace(/\s*\((كبير|جماعية):\s*\d+\)/, "")}
+                                .replace(/\s*\((كبير|جماعي|جماعية):\s*\d+\s*(شيكل)?\)/, "")}
                             </p>
                           )}
                         </div>
